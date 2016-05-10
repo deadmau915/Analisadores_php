@@ -1,32 +1,42 @@
  <?php
 
- 	echo 'hola mundo';
+	require('somefile.php');
 
  	$variable = 9;
  	$variable1 = 3;
- 	$v1(3); $v2; $v3;
-
- 	$booleano = true;
-
- 	$suma = $variable + $variable1;
-
- 	echo $suma;
-
-    require('conexion.php');
+ 	//~ $v1; $v2; $v3; $v4; $suma;
+//~ 
+ 	//~ $booleano = true;
     
- 	if($booleano == true)
-		echo $suma;
-		echo $suma;
-		echo $suma;
-		
-	switch($i)
-	{
-		case 1: echo "One"; break;
-		case 3:
-		case 4: echo "Three or Four"; break;
-		case 5: echo "Five"; break;
-		default: echo "Thingy"; break;
-	}
+    //~ class ClaseSencilla
+	//~ {
+		//~ public $var = 0;
+//~ 
+		//~ public function mostrarVar() {
+			//~ return 0;
+		//~ }
+	//~ }
+    
+ 	//~ if($booleano == false){
+		//~ $suma = $variable;
+	//~ }else{
+		//~ $suma = $variable1;
+	//~ }
+			
+	//~ switch($suma)
+	//~ {
+		//~ case 1: $v1 = $variable; break;
+		//~ case 3: $v2 = $variable; break;
+		//~ case 4: $v3 = $variable; break;
+		//~ default: $v4 = $variable; break;
+	//~ }
+	
+	//~ function recursividad($a)
+	//~ {
+		//~ if($a < 20){
+			//~ recursividad($a + 1);
+		//~ }
+	//~ }
 	
  			
 	//esto es un comentario corto 

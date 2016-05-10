@@ -7,34 +7,72 @@ import sys
 VERBOSE = 1
 
 def p_program(p):
-	'program : declaration_list'
-	pass
+    'program : OPEN_TAG declaration_list CLOSE_TAG'
+    pass
 
 def p_declaration_list_1(p):
-	'declaration_list : declaration_list  declaration' 
-	pass
+   'declaration_list : declaration_list  declaration' 
+   pass
 
 def p_declaration_list_2(p):
-	'declaration_list : declaration'
-	pass
+    'declaration_list : declaration'
+    pass
 
 def p_declaration(p):
-	'''declaration : var_declaration
-				  | fun_declaration'''
+	'''declaration : var_declaration2
+				  | fun_declaration
+				  | header_declaration
+				  | class_declaration
+	'''
 	pass
 
-def p_var_declaration_1(p):
-	'var_declaration : var_declaration2 SEMICOLON'
+def p_header_declaration(p):
+	'header_declaration : REQUIRE LPAREN STRING RPAREN SEMICOLON'
 	pass
+	
+def p_class_declaration(p):
+	'class_declaration : CLASS FUNCTION_NAME class_stmt'
+	pass
+	
+def p_class_stmt(p):
+	'class_stmt : LBLOCK attributes methods RBLOCK'
+	pass
+	
+def p_attributes1(p):
+	'attributes : attributes scope var_declaration'
+	pass
+	
+def p_attributes2(p):
+	'attributes : scope var_declaration'
+	pass
+	
+def p_methods1(p):
+	'methods : methods scope fun_declaration'
+	pass
+	
+def p_methods2(p):
+	'methods : scope fun_declaration'
+	pass
+	
+def p_scope(p):
+	'''scope : PRIVATE
+			 | PUBLIC
+			 | PROTECTED
+	'''
+	
+#~ def p_var_declaration_1(p):
+	#~ 'var_declaration : var_declaration2'
+	#~ pass
 
-def p_var_declaration_2(p):
-	'var_declaration : ID LBRACKET NUMBER RBRACKET SEMICOLON'
-	pass
+#~ def p_var_declaration_2(p):
+	#~ 'var_declaration : ID LBRACKET NUMBER RBRACKET SEMICOLON'
+	#~ pass
 
 def p_var_declaration_3(p):                     
 	'''var_declaration2 : ID SEMICOLON var_declaration2  
 	                               | ID SEMICOLON
 	                               | ID EQUAL NUMBER SEMICOLON var_declaration2
+	                               | ID EQUAL boolean SEMICOLON var_declaration2
 	                               | ID EQUAL NUMBER SEMICOLON
 	                               | ID EQUAL ID SEMICOLON var_declaration2
 	                               | ID EQUAL ID SEMICOLON
@@ -44,7 +82,7 @@ def p_var_declaration_3(p):
 	pass
 
 def p_fun_declaration(p):
-	'fun_declaration : FUNCTION ID LPAREN params RPAREN compount_stmt'
+	'fun_declaration : FUNCTION FUNCTION_NAME LPAREN params RPAREN compount_stmt'
 	pass
 
 def p_params_1(p):
@@ -52,7 +90,7 @@ def p_params_1(p):
 	pass
 
 def p_params_2(p):
-	'params : VOID'
+	'params : empty'
 	pass
 
 def p_param_list_1(p):
@@ -63,9 +101,9 @@ def p_param_list_2(p):
 	'param_list : param'
 	pass
 
-def p_param_list_3(p):
-	'param_list : empty'
-	pass
+#~ def p_param_list_3(p):
+	#~ 'param_list : empty'
+	#~ pass
 
 def p_param_1(p):
 	'param : ID'
@@ -188,7 +226,7 @@ def p_relop(p):
 	pass
 
 def p_additive_expression_1(p):
-	'''additive_expression : additive_expression addop term                                          
+	'''additive_expression : additive_expression addop term
     '''
 	pass
 
@@ -219,8 +257,8 @@ def p_term_2(p):
 	pass
 
 def p_mulop(p):
-	'''mulop : 	TIMES
-				| DIVIDE
+	'''mulop : TIMES
+			| DIVIDE
 	'''
 	pass
 
@@ -239,6 +277,10 @@ def p_factor_3(p):
 def p_factor_4(p):
 	'factor : NUMBER' 
 	pass
+	
+def p_factor_5(p):
+	'factor : boolean' 
+	pass
 
 def p_call(p):
 	'call : ID LPAREN args RPAREN'
@@ -256,6 +298,12 @@ def p_args_list_1(p):
 
 def p_args_list_2(p):
 	'args_list : expression'
+	pass
+	
+def p_boolean(p):
+	'''boolean : TRUE
+			   | FALSE
+	'''
 	pass
 
 def p_empty(p):
