@@ -4,9 +4,11 @@
 
  	$variable = 9;
  	$variable1 = 3;
- 	//~ $v1; $v2; $v3; $v4; $suma;
-//~ 
- 	//~ $booleano = true;
+ 	$v1; $v2; $v3; $v4; $suma;
+
+ 	$booleano = true;
+ 	
+ 	echo "Cadena: $un_bool";
     
     //~ class ClaseSencilla
 	//~ {

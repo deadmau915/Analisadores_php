@@ -39,11 +39,11 @@ def p_class_stmt(p):
 	pass
 	
 def p_attributes1(p):
-	'attributes : attributes scope var_declaration'
+	'attributes : attributes scope var_declaration2'
 	pass
 	
 def p_attributes2(p):
-	'attributes : scope var_declaration'
+	'attributes : scope var_declaration2'
 	pass
 	
 def p_methods1(p):
@@ -72,12 +72,13 @@ def p_var_declaration_3(p):
 	'''var_declaration2 : ID SEMICOLON var_declaration2  
 	                               | ID SEMICOLON
 	                               | ID EQUAL NUMBER SEMICOLON var_declaration2
-	                               | ID EQUAL boolean SEMICOLON var_declaration2
 	                               | ID EQUAL NUMBER SEMICOLON
+	                               | ID EQUAL boolean SEMICOLON var_declaration2
+	                               | ID EQUAL boolean SEMICOLON
 	                               | ID EQUAL ID SEMICOLON var_declaration2
 	                               | ID EQUAL ID SEMICOLON
-	                               | AMPERSANT ID SEMICOLON
 	                               | AMPERSANT ID SEMICOLON var_declaration2
+	                               | AMPERSANT ID SEMICOLON
 	'''
 	pass
 
@@ -118,7 +119,7 @@ def p_compount_stmt(p):
 	pass
 
 def p_local_declarations_1(p):
-	'local_declarations : local_declarations var_declaration'
+	'local_declarations : local_declarations var_declaration2'
 	pass
 
 def p_local_declarations_2(p):
@@ -140,7 +141,7 @@ def p_statement(p):
 				| iteration_stmt
 				| return_stmt
 	'''
-	pass
+	pass	
 
 def p_expression_stmt_1(p):
 	'expression_stmt : expression SEMICOLON'
@@ -184,7 +185,7 @@ def p_return_stmt_1(p):
 
 def p_return_stmt_2(p):
 	'return_stmt : RETURN expression SEMICOLON'
-	pass
+	pass	
 
 def p_expression_1(p):
 	'expression : var EQUAL expression'
