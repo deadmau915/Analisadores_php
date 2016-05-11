@@ -23,6 +23,16 @@ def p_declaration(p):
 				  | fun_declaration
 				  | header_declaration
 				  | class_declaration
+				  | print_stmt
+				  | selection_stmt
+				  | iteration_stmt
+	'''
+	pass
+	
+def p_print_stmt(p):
+	'''print_stmt : print_stmt ECHO STRING SEMICOLON
+				  | print_stmt ECHO ID SEMICOLON
+				  | empty
 	'''
 	pass
 
@@ -35,7 +45,7 @@ def p_class_declaration(p):
 	pass
 	
 def p_class_stmt(p):
-	'class_stmt : LBLOCK attributes methods RBLOCK'
+	'class_stmt : LBLOCK  print_stmt attributes print_stmt methods print_stmt RBLOCK'
 	pass
 	
 def p_attributes1(p):
@@ -59,14 +69,7 @@ def p_scope(p):
 			 | PUBLIC
 			 | PROTECTED
 	'''
-	
-#~ def p_var_declaration_1(p):
-	#~ 'var_declaration : var_declaration2'
-	#~ pass
-
-#~ def p_var_declaration_2(p):
-	#~ 'var_declaration : ID LBRACKET NUMBER RBRACKET SEMICOLON'
-	#~ pass
+	pass
 
 def p_var_declaration_3(p):                     
 	'''var_declaration2 : ID SEMICOLON var_declaration2  
@@ -102,10 +105,6 @@ def p_param_list_2(p):
 	'param_list : param'
 	pass
 
-#~ def p_param_list_3(p):
-	#~ 'param_list : empty'
-	#~ pass
-
 def p_param_1(p):
 	'param : ID'
 	pass
@@ -115,7 +114,7 @@ def p_param_2(p):
 	pass
 
 def p_compount_stmt(p):
-	'compount_stmt : LBLOCK local_declarations statement_list RBLOCK'
+	'compount_stmt : LBLOCK print_stmt local_declarations print_stmt statement_list print_stmt RBLOCK'
 	pass
 
 def p_local_declarations_1(p):
@@ -150,33 +149,25 @@ def p_expression_stmt_1(p):
 def p_expression_stmt_2(p):
 	'expression_stmt : SEMICOLON'
 	pass
-
-def p_selection_stmt_1(p):
-	'selection_stmt : IF LPAREN expression RPAREN statement'
+	
+def p_selection_stmt(p):
+	'''selection_stmt : IF LPAREN expression RPAREN statement
+						| IF LPAREN expression RPAREN statement ELSE statement
+						| SWITCH LPAREN var RPAREN statement
+						| CASE NUMBER COLON statement BREAK SEMICOLON
+						| DEFAULT COLON statement BREAK SEMICOLON
+						| print_stmt
+	'''
 	pass
 
-def p_selection_stmt_2(p):
-	'selection_stmt : IF LPAREN expression RPAREN statement ELSE statement'
+def p_iteration_stmt(p):
+	'''iteration_stmt : FOR LPAREN var_declaration2 SEMICOLON expression SEMICOLON additive_expression RPAREN statement 
+					  | WHILE LPAREN expression RPAREN statement
+	'''
 	pass
-
-def p_selection_stmt_3(p):
-	'selection_stmt : SWITCH LPAREN var RPAREN statement'
-	pass
-
-def p_selection_stmt_4(p):
-	'selection_stmt : CASE NUMBER COLON statement BREAK SEMICOLON'
-	pass
-
-def p_selection_stmt_5(p):
-	'selection_stmt : DEFAULT COLON statement BREAK SEMICOLON'
-	pass
-
-def p_iteration_stmt_1(p):
-	'iteration_stmt : WHILE LPAREN expression RPAREN statement'
-	pass
-
-def p_iteration_stmt_2(p):
-	'iteration_stmt : FOR LPAREN var_declaration2 SEMICOLON expression SEMICOLON additive_expression RPAREN statement'
+	
+def p_iteration_stmt_3(p):
+	'iteration_stmt : print_stmt'
 	pass
 
 def p_return_stmt_1(p):
@@ -227,8 +218,7 @@ def p_relop(p):
 	pass
 
 def p_additive_expression_1(p):
-	'''additive_expression : additive_expression addop term
-    '''
+	'additive_expression : additive_expression addop term'
 	pass
 
 def p_additive_expression_2(p):

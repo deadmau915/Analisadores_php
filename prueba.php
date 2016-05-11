@@ -3,44 +3,55 @@
 	require('somefile.php');
 
  	$variable = 9;
- 	$variable1 = 3;
  	$v1; $v2; $v3; $v4; $suma;
 
  	$booleano = true;
  	
- 	echo "Cadena: $un_bool";
+ 	echo "esto es un print, se muestra en pantalla";
+ 	echo $verb;
+ 	
+ 	if($a < 20){
+		$v1 = 1;
+		echo $v1;
+		$suma = $v2 + $v3;
+	}
     
     //~ class ClaseSencilla
 	//~ {
 		//~ public $var = 0;
-//~ 
-		//~ public function mostrarVar() {
+		//~ public $var1 = 0;
+		//~ 
+		//~ protected function mostrarVar() {
 			//~ return 0;
 		//~ }
 	//~ }
-    
- 	//~ if($booleano == false){
-		//~ $suma = $variable;
-	//~ }else{
-		//~ $suma = $variable1;
-	//~ }
-			
-	//~ switch($suma)
-	//~ {
-		//~ case 1: $v1 = $variable; break;
-		//~ case 3: $v2 = $variable; break;
-		//~ case 4: $v3 = $variable; break;
-		//~ default: $v4 = $variable; break;
-	//~ }
 	
-	//~ function recursividad($a)
-	//~ {
-		//~ if($a < 20){
-			//~ recursividad($a + 1);
-		//~ }
-	//~ }
-	
- 			
+	function recursividad($a)
+	{
+		if($a < 20){
+			$v1 = 1;
+			echo $v1;
+			$suma = $v2 + $v3;
+		}
+		
+		echo "esto es un print, se muestra en pantalla";
+		
+		switch($suma)
+		{
+			case 1: $v1 = $variable + $v1; break;
+			case 3: $v2 = $variable + $v2; break;
+			case 4: $v3 = $variable; break;
+			default: $v4 = $variable; break;
+		}
+		
+		while($j<=$i)
+		{
+			$v1 = $variable + $v1;
+			echo "*&nbsp&nbsp";
+		}
+		
+	}
+		
 	//esto es un comentario corto 
 	
 	/* 

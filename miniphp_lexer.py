@@ -12,7 +12,7 @@ tokens = (
     # Reserverd words
     'BREAK',    
     'ELSE', 
-    #~ 'ECHO', 
+    'ECHO', 
     'FOR',
     'IF', 
     'RETURN', 
@@ -54,7 +54,6 @@ tokens = (
     'RBLOCK',
     'COLON',
     'AMPERSANT',
-    #~ 'DOT',
     'STRING',
 
     # Others   
@@ -84,7 +83,6 @@ t_LBLOCK   = r'{'
 t_RBLOCK   = r'}'
 t_COLON   = r':'
 t_AMPERSANT = r'\&'
-#~ t_DOT = r'\.'
 t_DISTINT = r'!'
 
 
@@ -128,10 +126,6 @@ def t_FUNCTION(t):
     r'function'
     return t
     
-def t_FUNCTION_NAME(t):
-    r'[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
-    return t
-    
 def t_SWITCH(t):
     r'switch'
     return t
@@ -160,17 +154,9 @@ def t_ELSE(t):
 	r'else'
 	return t
 
-#~ def t_ECHO(t):
-	#~ r'echo'
-	#~ return t
-
-#~ def t_DO(t):
-	#~ r'do'
-	#~ return t
-
-#~ def t_CONTINUE(t):
-	#~ r'continue'
-	#~ return t
+def t_ECHO(t):
+	r'echo'
+	return t
 
 def t_FOR(t):
 	r'for'
@@ -183,22 +169,6 @@ def t_IF(t):
 def t_RETURN(t):
 	r'return'
 	return t
-
-#~ def t_AS(t):
-	#~ r'as'
-	#~ return t
-
-#~ def t_FOREACH(t):
-	#~ r'foreach'
-	#~ return t
-
-#~ def t_ARRAY(t):
-	#~ r'array \((\d+)\)'
-	#~ return t
-
-#~ def t_ISSET(t):
-	#~ r'isset'
-	#~ return t 
 
 def t_NUMBER(t):
     r'\d+(\.\d+)?'
@@ -232,6 +202,10 @@ def t_MINUSMINUS(t):
 def t_PLUSPLUS(t):
 	r'\+\+'
 	return t
+	
+def t_FUNCTION_NAME(t):
+    r'[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
+    return t
 
 def t_newline(t):
     r'\n+'
